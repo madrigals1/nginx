@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  nginx-proxy:
+    image: "jwilder/nginx-proxy"
+    volumes:
+      - "/etc/nginx/certs"
+      - "/etc/nginx/vhost.id"
+      - "/usr/share/nginx/html"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    ports:
+      - "80:80"
+      - "443:443"
+  nginx-proxy-letsencrypt:
+    image: "jrcs/letsencrypt-nginx-proxy-companion"
+    volumes_from: "nginx-proxy"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - DEFAULT_EMAIL=sabyrbayev.adi32@gmail.com
+  grafana:
+    image: "grafana/grafana"
+    environment:
+      - VIRTUAL_HOST=grafana.adigame.dev
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=grafana.adigame.dev
+      - LETSENCRYPT_EMAIL=sabyrbayev.adi32@gmail.com
