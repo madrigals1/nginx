@@ -19,10 +19,4 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
       - DEFAULT_EMAIL=sabyrbayev.adi32@gmail.com
-  grafana:
-    image: "grafana/grafana"
-    environment:
-      - VIRTUAL_HOST=grafana.adigame.dev
-      - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=grafana.adigame.dev
-      - LETSENCRYPT_EMAIL=sabyrbayev.adi32@gmail.com
+
