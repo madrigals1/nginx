@@ -13,7 +13,8 @@ services:
       - "443:443"
   nginx-proxy-letsencrypt:
     image: "jrcs/letsencrypt-nginx-proxy-companion"
-    volumes_from: "nginx-proxy"
+    volumes_from:
+      - "nginx-proxy"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
