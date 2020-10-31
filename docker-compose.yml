@@ -4,9 +4,9 @@ services:
   nginx-proxy:
     image: "jwilder/nginx-proxy"
     volumes:
-      - "/etc/nginx/certs"
-      - "/etc/nginx/vhost.id"
-      - "/usr/share/nginx/html"
+      - "./data/certs:/etc/nginx/certs"
+      - "./data/vhost.id:/etc/nginx/vhost.d"
+      - "./data/html:/usr/share/nginx/html"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
     ports:
       - "80:80"
