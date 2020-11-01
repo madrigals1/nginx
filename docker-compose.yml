@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+
   nginx-proxy:
     image: "jwilder/nginx-proxy"
     volumes:
@@ -11,7 +12,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
-  nginx-proxy-letsencrypt:
+    networks:
+      - proxy
+
+  letsencrypt:
     image: "jrcs/letsencrypt-nginx-proxy-companion"
     volumes_from:
       - "nginx-proxy"
@@ -20,3 +24,7 @@ services:
     environment:
       - DEFAULT_EMAIL=sabyrbayev.adi32@gmail.com
 
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
