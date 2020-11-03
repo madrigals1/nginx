@@ -8,7 +8,9 @@ services:
       - "./data/certs:/etc/nginx/certs"
       - "./data/vhost.id:/etc/nginx/vhost.d"
       - "./data/html:/usr/share/nginx/html"
+      - "./data/location/default_location:/etc/nginx/vhost.d/default_location"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "static:/var/www/html/static"
     ports:
       - "80:80"
       - "443:443"
@@ -28,3 +30,6 @@ networks:
   proxy:
     external:
       name: nginx-proxy
+
+volumes:
+  static:
