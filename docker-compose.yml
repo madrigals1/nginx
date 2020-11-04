@@ -2,14 +2,13 @@ version: "3"
 
 services:
 
-  nginx-proxy:
+  nginx:
     image: "jwilder/nginx-proxy"
     volumes:
       - "./data/certs:/etc/nginx/certs"
       - "./data/vhost.d:/etc/nginx/vhost.d"
       - "./data/html:/usr/share/nginx/html"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
-      - "static:/var/www/html/static"
     ports:
       - "80:80"
       - "443:443"
@@ -29,6 +28,3 @@ networks:
   proxy:
     external:
       name: nginx-proxy
-
-volumes:
-  static:
