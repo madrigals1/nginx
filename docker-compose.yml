@@ -27,4 +27,4 @@ services:
 networks:
   proxy:
     external:
-      name: nginx-proxy
+      name: ${NGINX_PROXY_NETWORK}
