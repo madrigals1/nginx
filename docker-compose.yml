@@ -18,11 +18,11 @@ services:
   letsencrypt:
     image: "jrcs/letsencrypt-nginx-proxy-companion"
     volumes_from:
-      - "nginx"
+      - nginx
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
-      - DEFAULT_EMAIL=sabyrbayev.adi32@gmail.com
+      DEFAULT_EMAIL: ${DEFAULT_EMAIL}
 
 networks:
   proxy:
