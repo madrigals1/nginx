@@ -8,6 +8,7 @@ services:
       - "./data/certs:/etc/nginx/certs"
       - "./data/vhost.d:/etc/nginx/vhost.d"
       - "./data/html:/usr/share/nginx/html"
+      - "./data/conf.d:/etc/nginx/conf.d"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
     ports:
       - "80:80"
