@@ -1,3 +1,5 @@
 data
 .env
 .vscode
+
+!data/conf.d/custom_proxy_settings.conf
