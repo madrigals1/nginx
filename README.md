@@ -56,9 +56,11 @@ docker-compose down
 
 ## Usage
 
-- Dockerize your app and create `docker-compose.yml` file.
-- Open `docker-compose.yml`
-- Find the service, that we want to add **SSL certificates**
+- Go to the root folder of the app, that you want to make **SSL certificates** for.
+- Dockerize the app. 
+- Create `docker-compose.yml` file.
+- Open `docker-compose.yml`.
+- Find the service, that we want to add **SSL certificates**. (In some cases your app might consist of multiple services, e.g. backend + database)
 - Add these values into `environment:` section:
 
     ```
@@ -72,7 +74,7 @@ docker-compose down
         LETSENCRYPT_EMAIL: <email_address_for_letsencrypt_notifications>
     ```
 
-- Add networks section inside service
+- Add networks section inside service:
 
     ```
     service_name:
@@ -83,7 +85,7 @@ docker-compose down
         - proxy
     ```
 
-- Add the network at the end of `docker-compose.yml`
+- Add the network at the end of `docker-compose.yml`:
 
     ```
     version "3"
@@ -97,7 +99,7 @@ docker-compose down
           name: <NGINX_PROXY_NETWORK_value_from_.env>
     ```
 
-- Restart **Dockerized Nginx**
+- Restart **Dockerized Nginx**.
 - App should be available under domain name, that we put in `VIRTUAL_HOST` environment variable.
 
 ## Authors
