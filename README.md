@@ -61,10 +61,10 @@ docker-compose down
 - Find the service, that we want to add **SSL certificates**
 - Add these values into `environment:` section:
 
-    ```docker-c
+    ```
     service_name:
-    ...
-    environment:
+      ...
+      environment:
         ... Other environment variables ...
         VIRTUAL_HOST: <domain_of_our_service>
         VIRTUAL_PORT: <port_of_app_inside_docker_network>
@@ -76,10 +76,10 @@ docker-compose down
 
     ```
     service_name:
-    ...
-    environment:
+      ...
+      environment:
         ...
-    networks:
+      networks:
         - proxy
     ```
 
@@ -89,10 +89,10 @@ docker-compose down
     version "3"
 
     services:
-    ...
+      ...
 
     networks:
-    proxy:
+      proxy:
         external:
         name: <NGINX_PROXY_NETWORK_value_from_.env>
     ```
