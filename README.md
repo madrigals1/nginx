@@ -98,7 +98,7 @@ docker-compose down
     ```
 
 - Restart **Dockerized Nginx**
-
+- App should be available under domain name, that we put in `VIRTUAL_HOST` environment variable.
 
 ## Authors
 - Adi Sabyrbayev [Github](https://github.com/madrigals1), [LinkedIn](https://www.linkedin.com/in/madrigals1/)
