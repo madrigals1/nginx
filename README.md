@@ -94,7 +94,7 @@ docker-compose down
     networks:
       proxy:
         external:
-        name: <NGINX_PROXY_NETWORK_value_from_.env>
+          name: <NGINX_PROXY_NETWORK_value_from_.env>
     ```
 
 - Restart **Dockerized Nginx**
