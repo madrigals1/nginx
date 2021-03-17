@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-
   nginx:
     image: "jwilder/nginx-proxy"
+    container_name: nginx
     volumes:
       - "./data/certs:/etc/nginx/certs"
       - "./data/vhost.d:/etc/nginx/vhost.d"
