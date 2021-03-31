@@ -14,7 +14,7 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - proxy
+      - https
 
   letsencrypt:
     container_name: letsencrypt
@@ -27,6 +27,6 @@ services:
       DEFAULT_EMAIL: ${DEFAULT_EMAIL}
 
 networks:
-  proxy:
+  https:
     external:
-      name: ${NGINX_PROXY_NETWORK}
+      name: ${HTTPS_NETWORK}
