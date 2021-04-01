@@ -19,19 +19,19 @@ cp .env.example .env
 
 Environment variables:
 - `DEFAULT_EMAIL` - default email, where we get notifications from **LetsEncrypt**
-- `NGINX_PROXY_NETWORK` - Docker network, which we will use find Dockerized apps to add SSL certificates. All our Dockerized apps, that we want to add SSL certificates, should be inside this network.
+- `HTTPS_NETWORK` - Docker network, which we will use find Dockerized apps to add SSL certificates. All our Dockerized apps, that we want to add SSL certificates, should be inside this network.
 
 ```dotenv
 DEFAULT_EMAIL=user@example.com
-NGINX_PROXY_NETWORK=nginx-proxy
+HTTPS_NETWORK=https_network
 ```
 
 ---
 
-Create network with the name, that we have in `NGINX_PROXY_NETWORK` environment variable.
+Create network with the name, that we have in `HTTPS_NETWORK` environment variable.
 
 ```shell script
-docker network create nginx-proxy
+docker network create HTTPS_NETWORK
 ```
 
 ---
@@ -82,7 +82,7 @@ docker-compose down
       environment:
         ...
       networks:
-        - proxy
+        - https
     ```
 
 - Add the network at the end of `docker-compose.yml`:
@@ -94,9 +94,9 @@ docker-compose down
       ...
 
     networks:
-      proxy:
+      https:
         external:
-          name: <NGINX_PROXY_NETWORK_value_from_.env>
+          name: <HTTPS_NETWORK_value_from_.env>
     ```
 
 - Restart **Dockerized Nginx**.
