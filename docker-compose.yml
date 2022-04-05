@@ -10,6 +10,7 @@ services:
       - "./data/html:/usr/share/nginx/html"
       - "./data/conf.d:/etc/nginx/conf.d"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -23,6 +24,7 @@ services:
       - nginx
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    restart: always
     environment:
       DEFAULT_EMAIL: ${DEFAULT_EMAIL}
 
