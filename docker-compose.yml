@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  nginx:
+  nginx-proxy:
     image: "jwilder/nginx-proxy"
-    container_name: nginx
+    container_name: nginx-proxy
     volumes:
-      - "./data/certs:/etc/nginx/certs"
-      - "./data/vhost.d:/etc/nginx/vhost.d"
-      - "./data/html:/usr/share/nginx/html"
+      - "certs:/etc/nginx/certs"
+      - "vhost:/etc/nginx/vhost.d"
+      - "html:/usr/share/nginx/html"
       - "./data/conf.d:/etc/nginx/conf.d"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
     restart: always
@@ -21,12 +21,17 @@ services:
     container_name: letsencrypt
     image: "jrcs/letsencrypt-nginx-proxy-companion"
     volumes_from:
-      - nginx
+      - nginx-proxy
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     restart: always
     environment:
       DEFAULT_EMAIL: ${DEFAULT_EMAIL}
+
+volumes:
+  vhost:
+  html:
+  certs:
 
 networks:
   https:
