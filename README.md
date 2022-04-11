@@ -31,7 +31,7 @@ HTTPS_NETWORK=https_network
 Create network with the name, that we have in `HTTPS_NETWORK` environment variable.
 
 ```shell script
-docker network create HTTPS_NETWORK
+docker network create https_network
 ```
 
 ---
