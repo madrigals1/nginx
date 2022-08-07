@@ -1,8 +1,8 @@
-version: "3"
+version: "3.8"
 
 services:
   nginx-proxy:
-    image: "jwilder/nginx-proxy"
+    image: jwilder/nginx-proxy
     container_name: nginx-proxy
     volumes:
       - "certs:/etc/nginx/certs"
@@ -19,7 +19,7 @@ services:
 
   letsencrypt:
     container_name: letsencrypt
-    image: "jrcs/letsencrypt-nginx-proxy-companion"
+    image: jrcs/letsencrypt-nginx-proxy-companion
     volumes_from:
       - nginx-proxy
     volumes:
@@ -35,5 +35,5 @@ volumes:
 
 networks:
   https:
-    external:
-      name: ${HTTPS_NETWORK}
+    name: ${HTTPS_NETWORK}
+    external: true
